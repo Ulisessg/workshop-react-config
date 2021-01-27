@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
@@ -28,6 +29,10 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: [{ loader: 'html-loader' }],
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
         ],
     },
